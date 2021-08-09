@@ -1,9 +1,10 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { DefaultComponent } from './default.component';
-import { HeaderComponent } from './layout/header/header.component';
-import { FooterComponent } from './layout/footer/footer.component';
-import { SidebarComponent } from './layout/sidebar/sidebar.component';
+import { HeaderComponent } from '../layout/header/header.component';
+import { FooterComponent } from '../layout/footer/footer.component';
+import { SidebarComponent } from '../layout/sidebar/sidebar.component';
+import { AppRoutingModule } from "../app-routing.module";
 
 
 
@@ -15,7 +16,9 @@ import { SidebarComponent } from './layout/sidebar/sidebar.component';
     SidebarComponent
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    AppRoutingModule,
+
   ]
 })
 export class DefaultModule { }
