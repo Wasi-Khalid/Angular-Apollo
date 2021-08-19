@@ -31,6 +31,6 @@ export class BrandlistComponent implements OnInit {
       this.loading = result.loading;
       this.error = result.error;
     });
+
   }
 }
-

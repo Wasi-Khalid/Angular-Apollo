@@ -1,4 +1,4 @@
-<h1 class="text-center jumbotron py-4">Brands List</h1>
+<h1 class="text-center jumbotron">Brands List</h1>
 <div class="container" *ngIf="loading">
   Loading...
 </div>
@@ -6,7 +6,7 @@
   Error :(
 </div>
 <div class="container">
-  <table *ngIf="getBrandsList" class="table" id="customers">
+  <table *ngIf="getBrandsList" class="table" id="myTable">
     <tr>
       <th class="col-6">ID</th>
       <th class="col-6">Name</th>
