@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { DashboardComponent } from "./dashboard/dashboard.component";
 import { BrandlistComponent } from './brandlist/brandlist.component';
 import { LoginComponent } from './login/login.component';
-import {AppRoutingModule} from "../app-routing.module";
+import { AppRoutingModule } from "../app-routing.module";
 import { RegisterDeviceComponent } from './register-device/register-device.component';
 
 
@@ -15,9 +15,9 @@ import { RegisterDeviceComponent } from './register-device/register-device.compo
     LoginComponent,
     RegisterDeviceComponent,
   ],
-    imports: [
-        CommonModule,
-        AppRoutingModule
-    ]
+  imports: [
+    CommonModule,
+    AppRoutingModule
+  ]
 })
 export class ComponentsModule { }

@@ -1,17 +1,22 @@
 import { Component, OnInit } from '@angular/core';
 import {Apollo, gql} from "apollo-angular";
+import {v4 as uuidv4} from 'uuid';
 
 
 const registerDevice = gql`
-  mutation registerDevice {
+  mutation registerDevice(
+    $type: String!,
+    $manufacturer: String!,
+    $model: String!,
+    $appVersion: String!,
+    $installationId: String!
+  ) {
     registerDevice(device:{
-      type:"new",
-      manufacturer:"2012",
-      model: "none",
-      fcmToken:"none"
-      appVersion:"none",
-      installationId: "none",
-      locale:"none"
+      type: $type,
+      manufacturer: $manufacturer,
+      model: $model,
+      appVersion: $appVersion,
+      installationId: $installationId,
     })
   }
 `;
@@ -24,27 +29,29 @@ const registerDevice = gql`
 })
 export class RegisterDeviceComponent implements OnInit {
 
-  registerData: any[] | any;
   loading = true;
   error: any;
 
-
   constructor(private apollo: Apollo) { }
-  registerFunction() {
+
+
+  ngOnInit(): void {
     this.apollo.mutate({
       mutation: registerDevice,
+      variables: {
+        type: "web",
+        manufacturer: "",
+        model: "",
+        appVersion: "1.0",
+        installationId: `${uuidv4()}`,
+      }
     }).subscribe(({ data }) => {
       // @ts-ignore
-      console.log('got data', data.registerDevice);
-      // @ts-ignore
-      document.getElementById('data').innerHTML = data.registerDevice
+      localStorage.setItem(data , data.registerDevice);
+      console.log('Token Generated')
     },(error) => {
       console.log('there was an error sending the query', error);
     });
-  }
-
-  ngOnInit(): void {
-
   }
 
 }
