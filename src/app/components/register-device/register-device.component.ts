@@ -8,8 +8,10 @@ const registerDevice = gql`
       type:"new",
       manufacturer:"2012",
       model: "none",
+      fcmToken:"none"
       appVersion:"none",
-      installationId: "none"
+      installationId: "none",
+      locale:"none"
     })
   }
 `;
