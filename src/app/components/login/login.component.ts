@@ -1,15 +1,36 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
+import {Router} from "@angular/router";
+import {AuthService} from "../../services/auth/auth.service";
+import {Subscription} from "rxjs";
+
+
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss']
 })
-export class LoginComponent implements OnInit {
+export class LoginComponent implements OnInit,OnDestroy {
 
-  constructor() { }
+  reg_sub: Subscription | any;
 
-  ngOnInit(): void {
+  constructor(
+    private router: Router,
+    private auth_service: AuthService ) { }
+
+  ngOnInit() {
+    // @ts-ignore
+    this.reg_sub = this.auth_service.loginAuth();
+    // @ts-ignore
+    if (localStorage.getItem("Token")) {
+      this.router.navigate(['']);
+    }
   }
+  ngOnDestroy() {
+    if (this.reg_sub) {
+      this.reg_sub.unsubscribe()
+    }
+  }
+
 
 }

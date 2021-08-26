@@ -10,6 +10,7 @@ import { RegisterDeviceComponent } from "./components/register-device/register-d
 const routes: Routes = [{
   path: '',
   component: DefaultComponent,
+  canActivate:[AuthGuard],
   children:[{
     path:'',
     redirectTo: 'dashboard',
