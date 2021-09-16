@@ -13,14 +13,23 @@ import {Subscription} from "rxjs";
 export class LoginComponent implements OnInit,OnDestroy {
 
   reg_sub: Subscription | any;
+  email: any;
+  password: any;
 
   constructor(
     private router: Router,
-    private auth_service: AuthService ) { }
+    private auth_service: AuthService,
+
+  ) { }
+
+  onClick(password: any, email: any){
+    this.reg_sub = this.auth_service.onlogin(password,email);
+  }
 
   ngOnInit() {
     // @ts-ignore
     this.reg_sub = this.auth_service.loginAuth();
+
     // @ts-ignore
     if (localStorage.getItem("Token")) {
       this.router.navigate(['']);

@@ -18,10 +18,15 @@ export class AuthGuard implements CanActivate {
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
 
-    // @ts-ignore
-    if (localStorage.getItem("Token")) {
-      return true;
+    if (localStorage.getItem("Auth")) {
+      this.router.navigate([''])
+    } else {
+      this.router.navigate(['login']);
+        console.log("Invalid Authentication")
+    }
 
+    if (localStorage.getItem("Reg_Token")) {
+      return true;
     } else {
       this.router.navigate(['login']);
       console.log("User not found")

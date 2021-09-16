@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import {Apollo, gql} from "apollo-angular";
 import {v4 as uuidv4} from "uuid";
+import {HttpClient} from "@angular/common/http";
 
 
 const registerDevice = gql`
@@ -20,14 +21,36 @@ const registerDevice = gql`
     })
   }
 `;
+const authenticate = gql`
+  mutation authentication(
+    $password: String!,
+    $email: String!
+  ){
+    authenticate(password:$password,email:$email){
+      id
+      createdAt
+      type
+      name
+      email
+      verified
+    }
+  }
+`;
+
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
 
-  private data: string | any;
-  constructor(private apollo: Apollo) { }
+
+
+  constructor(
+    private apollo: Apollo,
+    private http: HttpClient
+) { }
+
+
 
   loginAuth() {
     this.apollo.mutate({
@@ -41,12 +64,34 @@ export class AuthService {
       }
     }).subscribe(({ data }) => {
       // @ts-ignore
-      localStorage.setItem("Token" , data.registerDevice);
-      console.log('Token Generated')
+      const Token = data.registerDevice
+      localStorage.setItem("Reg_Token" , `${Token}` );
+      console.log('Token Generated');
     },(error) => {
       console.log('there was an error sending the query', error);
     });
   }
+
+
+
+  onlogin(password: any, email: any) {
+    this.apollo.mutate({
+      mutation: authenticate,
+      variables: {
+        password: `${password}`,
+        email: `${email}`,
+      }
+    }).subscribe(({ data }) => {
+      // @ts-ignore
+      const auth = JSON.stringify(data.authenticate)
+      localStorage.setItem("Auth" , `${auth}`);
+      console.log('Token Generated');
+    },(error) => {
+      console.log('there was an error sending the mutation', error);
+    });
+  }
+
+
 }
 
 
