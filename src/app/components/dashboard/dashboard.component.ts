@@ -15,8 +15,6 @@ export class DashboardComponent implements OnInit,OnDestroy {
 
   }
   ngOnDestroy() {
-    localStorage.removeItem("Reg_Token");
-    localStorage.clear();
   }
 }
 

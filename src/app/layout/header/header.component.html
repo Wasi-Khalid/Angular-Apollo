@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
   <a class="navbar-brand" href="#">Angular GQL</a>
-  <div class="collapse navbar-collapse">
+  <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
     <ul class="navbar-nav mr-auto ml-3">
       <li class="nav-item">
         <a class="nav-link" routerLinkActive="list-item-active" routerLink="/dashboard">Dashboard</a>
@@ -11,8 +11,11 @@
       <li class="nav-item">
         <a class="nav-link" routerLinkActive="list-item-active" routerLink="/register-device">Register Device</a>
       </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLinkActive="list-item-active" routerLink="/city-areas">Areas/Cities</a>
+      </li>
     </ul>
-    <button class="nav-link btn btn-primary " routerLinkActive="list-item-active" routerLink="/login">Sign Out</button>
+    <button (click)="clearLocal()" class="nav-link btn btn-primary " routerLinkActive="list-item-active" routerLink="/login">Sign Out</button>
 
   </div>
 </nav>

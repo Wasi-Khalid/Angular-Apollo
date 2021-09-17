@@ -6,6 +6,7 @@ import { BrandlistComponent } from "./components/brandlist/brandlist.component";
 import { LoginComponent } from "./components/login/login.component";
 import { AuthGuard } from "./guards/AuthGuard/auth.guard";
 import { RegisterDeviceComponent } from "./components/register-device/register-device.component";
+import {CityAreasComponent} from "./components/city-areas/city-areas.component";
 
 const routes: Routes = [{
   path: '',
@@ -24,6 +25,9 @@ const routes: Routes = [{
   },{
     path:'register-device',
     component: RegisterDeviceComponent
+  },{
+    path:'city-areas',
+    component: CityAreasComponent
   }]
 },{
   path:'login',

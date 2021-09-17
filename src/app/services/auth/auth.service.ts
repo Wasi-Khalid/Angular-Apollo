@@ -85,7 +85,7 @@ export class AuthService {
       // @ts-ignore
       const auth = JSON.stringify(data.authenticate)
       localStorage.setItem("Auth" , `${auth}`);
-      console.log('Token Generated');
+      console.log('User Verified');
     },(error) => {
       console.log('there was an error sending the mutation', error);
     });
