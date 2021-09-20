@@ -12,6 +12,7 @@ import { DashboardComponent } from "./components/dashboard/dashboard.component";
 import {DefaultModule} from "./default/default.module";
 import {ComponentsModule} from "./components/components.module";
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {NgbModule} from "@ng-bootstrap/ng-bootstrap";
 
 @NgModule({
   declarations: [
@@ -23,6 +24,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     GraphQLModule,
     HttpClientModule,
     DefaultModule,
+    NgbModule,
     ComponentsModule,
     BrowserAnimationsModule
   ],

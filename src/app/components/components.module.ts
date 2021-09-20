@@ -5,8 +5,10 @@ import { BrandlistComponent } from './brandlist/brandlist.component';
 import { LoginComponent } from './login/login.component';
 import { AppRoutingModule } from "../app-routing.module";
 import { RegisterDeviceComponent } from './register-device/register-device.component';
-import {FormsModule} from "@angular/forms";
+import { FormsModule } from "@angular/forms";
 import { CityAreasComponent } from './city-areas/city-areas.component';
+import { NgbModule } from "@ng-bootstrap/ng-bootstrap";
+import { NgxSpinnerModule } from "ngx-spinner";
 
 
 
@@ -20,8 +22,10 @@ import { CityAreasComponent } from './city-areas/city-areas.component';
   ],
     imports: [
         CommonModule,
+        NgbModule,
         AppRoutingModule,
-        FormsModule
-    ]
+        FormsModule,
+        NgxSpinnerModule
+    ],
 })
 export class ComponentsModule { }
