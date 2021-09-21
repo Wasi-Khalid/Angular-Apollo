@@ -28,7 +28,7 @@ export class LoginComponent implements OnInit,OnDestroy {
     this.spinner.show();
     setTimeout(() => {
       this.spinner.hide();
-    }, 5000);
+    }, 4000);
   }
 
   ngOnInit() {

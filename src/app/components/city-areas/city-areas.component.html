@@ -19,7 +19,8 @@
                     <input aria-label="Small" aria-describedby="inputGroup-sizing-sm" class="form-control">
                   </div>
                   <div class="scrollable-list mt-5 list-group" *ngFor="let item of getCityAreas">
-                    <div class="list-group-item list-group-item-action">{{item.name}}
+                    <div (click)="onAreaToOutlet(item.id)" class="list-group-item list-group-item-action">
+                      {{item.name}}
                     </div>
                   </div>
                 </div>
@@ -37,10 +38,10 @@
             <input #distance required="required" class="form-control" id="distance" type="text">
             <label for="minOrder">Min Order:</label>
             <input #minOrder required="required" class="form-control" id="minOrder" type="text">
-            <button (click)="areaToOutlet(distance.value,minOrder.value)" class="btn btn-sm btn-primary mt-2 mb-2" style="float: right" type="submit">save</button>
+            <button (click)="areaToOutlet(distance.value,minOrder.value);onSave()" class="btn btn-sm btn-primary mt-2 mb-2" style="float: right" type="submit">save</button>
           </form>
         </ng-template>
-        <button class="btn btn-primary d-block mx-auto" aria-describedby="popover-basic" [autoClose]="false" [ngbPopover]="popContent" popoverTitle="Add Details">
+        <button id="areatoout" class="btn btn-disabled btn-primary d-block mx-auto" aria-describedby="popover-basic"  [animation]="true" [autoClose]="false" [ngbPopover]="popContent" popoverTitle="Add Details" disabled="">
           <svg xmlns="http://www.w3.org/2000/svg" class="mt-1" width="24" height="24" viewBox="0 0 26 26" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
             <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
             <line x1="5" y1="12" x2="19" y2="12"></line>
@@ -48,7 +49,7 @@
             <line x1="13" y1="6" x2="19" y2="12"></line>
           </svg>
         </button>
-        <button (click)="removeAreaFromOutlet(234)" class="btn btn-danger d-block mx-auto mt-4">
+        <button  id="rem-button" (click)="removeAreaFromOutlet();onExit()" class="btn btn-disabled btn-danger d-block mx-auto mt-4" disabled="">
           <svg xmlns="http://www.w3.org/2000/svg" class="mt-1" width="24" height="24" viewBox="0 0 26 26" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
             <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
             <line x1="5" y1="12" x2="19" y2="12"></line>
@@ -71,7 +72,7 @@
                     <input aria-label="Small" aria-describedby="inputGroup-sizing-sm" class="form-control">
                   </div>
                   <div class="scrollable-list mt-5 list-group" *ngFor="let item of getOutletAreas">
-                    <div class="list-group-item">
+                    <div class="list-group-item" (click)="remAreaFromOutlet(item.area.id)">
                       <p style="margin-bottom: 0">{{item.area.name}}</p>
                       <p style="margin-bottom: 0">Distance (km):{{item.distance}}</p>
                       <p style="margin-bottom: 0">Min Order (Rs.):{{item.minOrder}}</p>

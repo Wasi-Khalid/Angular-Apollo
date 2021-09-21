@@ -10,7 +10,7 @@
       <input #password type="password" class="form-control col-6 mr-auto ml-auto" id="exampleInputPassword1" placeholder="Password">
     </div>
     <button (click)="onClick(password.value,email.value)" routerLinkActive="list-item-active" routerLink="/dashboard" type="submit" class="btn btn-primary">Login
-    <ngx-spinner  bdColor = "rgba(0, 0, 0, 0.8)" size = "large" color = "#fff" type = "line-scale" [fullScreen] = "true"><p style="color: white" >Wait for Verifying User</p></ngx-spinner>
+    <ngx-spinner  bdColor = "rgba(0, 0, 0, 0.8)" size = "large" color = "#fff" type = "line-scale" [fullScreen] = "true"><p style="color: white" >Verifying User... Please Wait!</p></ngx-spinner>
     </button>
   </form>
 </div>

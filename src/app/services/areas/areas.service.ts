@@ -5,11 +5,12 @@ const addAreaToOutlet = gql`
   mutation addAreaToOutlet(
     $distance: Float,
     $minOrder: Float,
+    $areaId: Float!
   ){
     addAreaToOutlet(details:{
       distance: $distance
       minOrder: $minOrder
-      areaId: 234
+      areaId: $areaId
     }){
       id
       name
@@ -32,12 +33,13 @@ export class AreasService {
 
   constructor(private apollo: Apollo,) { }
 
-  areaToOutlet(distance: any,minOrder: any){
+  areaToOutlet(distance: any,minOrder: any, areaId:any){
     this.apollo.mutate({
       mutation: addAreaToOutlet,
       variables:{
         distance: distance,
         minOrder: minOrder,
+        areaId: areaId
       }
     }).subscribe(({data}) => {
      this.areaData = data
@@ -50,7 +52,7 @@ export class AreasService {
         areaId: areaId
       }
     }).subscribe(({data}) => {
-     console.log(data)
+      this.areaData = data
     })
   }
 }

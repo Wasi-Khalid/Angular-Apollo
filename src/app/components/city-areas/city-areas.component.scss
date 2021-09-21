@@ -3,8 +3,8 @@
 }
 .scrollable-list {
   height: 52vh;
-  overflow: hidden;
-  overflow-y: scroll;
+  overflow: auto;
+  overflow-y: auto;
 }
 .item {
   min-height: 250px;
